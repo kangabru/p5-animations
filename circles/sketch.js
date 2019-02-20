@@ -4,12 +4,7 @@ let spheres = [];
 
 function setup() {
     createCanvas(windowWidth, windowHeight - 100, WEBGL);
-    // spheres.push(new Sphere(150, 4, 9, 15, 37));
-    // spheres.push(new Sphere(100, 6, 17, 20, 7));
-    // spheres.push(new Sphere(150, 6, 5, 25, 19));
-
     spheres.push(new Sphere(150, 4, 05, 10, 15));
-    // spheres.push(new Sphere(120, 5, 10, 15, 20, [00, 00, 80]));
     spheres.push(new Sphere(090, 6, 15, 20, 25, [00, 00, 80]));
 
     // min, max, start, step
@@ -31,7 +26,7 @@ class Sphere {
     constructor(radius, steps = 5, rotX = 0, rotY = 0, rotZ = 0, color = undefined) {
         this.steps = steps;
         this.rad = radius;
-        this.offset = random(0, radius);
+        this.offset = random(0, PI);
         this.rotX = random(TWO_PI);
         this.rotY = random(TWO_PI);
         this.rotZ = random(TWO_PI);
@@ -48,9 +43,9 @@ class Sphere {
         for (let i = 0; i < this.steps; i++) {
             let path = [];
 
-            let gap = this.rad * 2 / this.steps;
-            let y = this.offset + gap * i - this.rad;
-            let angleY = asin(y / this.rad);
+            let gap = PI / this.steps;
+            let angleY = this.offset + gap * i - PI / 2;
+            let y = this.rad * sin(angleY);
 
             for (let angle = 0; angle < TWO_PI; angle += TWO_PI / 100) {
                 let x = this.rad * cos(angle) * cos(angleY);
@@ -83,7 +78,7 @@ class Sphere {
         rotateZ(-this.rotZ);
 
         // Animate variables
-        this.offset += speedSlider.value() / 2 ** 6;
+        this.offset += speedSlider.value() / 2 ** 12;
 
         let speedFact = rotateSlider.value() / 2 ** 16;
         this.rotX += this.rotRateX * speedFact;
@@ -92,7 +87,7 @@ class Sphere {
 
         // Reset limits
         let limit = (number, max) => number > max ? number - max : number;
-        this.offset = limit(this.offset, this.rad * 2 / this.steps);
+        this.offset = limit(this.offset, PI / this.steps);
         this.rotX = limit(this.rotX, TWO_PI);
         this.rotY = limit(this.rotY, TWO_PI);
         this.rotZ = limit(this.rotZ, TWO_PI);
