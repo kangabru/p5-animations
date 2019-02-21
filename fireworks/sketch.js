@@ -1,7 +1,7 @@
 let quantitySlider, explodeSlider, rotateSlider;
 let gravity, minParticles = 3, explodeParticles;
 let angleRotate = 0;
-const windowOffset = 30;
+const windowOffset = 40;
 let particles = [], fireworks = [];
 let is3D = false, is2D = !is3D;
 

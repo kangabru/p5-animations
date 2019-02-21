@@ -11,7 +11,7 @@ function safelog(message) {
 }
 
 function setup() {
-    createCanvas(windowWidth, windowHeight - 100, WEBGL);
+    createCanvas(windowWidth, windowHeight - 40, WEBGL);
     spheres.push(new Squircle(150, 10, 05, 10, 15));
 
     // min, max, start, step

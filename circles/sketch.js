@@ -3,7 +3,7 @@ let speedSlider, rotateSlider;
 let spheres = [];
 
 function setup() {
-    createCanvas(windowWidth, windowHeight - 100, WEBGL);
+    createCanvas(windowWidth, windowHeight - 40, WEBGL);
     spheres.push(new Sphere(150, 4, 05, 10, 15));
     spheres.push(new Sphere(090, 6, 15, 20, 25, [00, 00, 80]));
 

@@ -5,7 +5,7 @@ let angleChange = 0, angleRotate = 0;
 let angleSlider, rotateSlider, stepsSlider;
 
 function setup() {
-    createCanvas(windowWidth, windowHeight - 100, WEBGL);
+    createCanvas(windowWidth, windowHeight - 40, WEBGL);
 
     // min, max, start, step
     angleSlider = createSlider(0, 100, 50, 1);
