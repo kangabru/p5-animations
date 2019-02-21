@@ -56,10 +56,12 @@ class Sphere {
                 let radAct = radMax * cos(axo);
                 ellipse(0, 0, radAct);
 
+                // Draw secondary circles
                 const iSteps = 3;
                 let iSize = sizeSlider.value() / 5;
                 for (let i = 1; i <= iSteps; i++) {
-                    let iDist = i * iSize, iRad = radAct * (1 - i / iSteps);
+                    let iDist = i * iSize * cos(axo);
+                    let iRad = radAct - iDist;
                     translate(0, 0, iDist);
                     ellipse(0, 0, iRad);
                     translate(0, 0, -iDist);
