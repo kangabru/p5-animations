@@ -1,5 +1,5 @@
 let angleChange = 0, angleRotate = 0;
-let speedSlider, rotateSlider, miscSlider;
+let speedSlider, rotateSlider, wiggleOffsetSlider, wiggleAmountSlider;
 let spheres = [];
 
 let logCount = 0, maxLogs = 100;
@@ -17,7 +17,8 @@ function setup() {
     // min, max, start, step
     speedSlider = createSlider(00, 100, 25, 1);
     rotateSlider = createSlider(0, 100, 25, 1);
-    miscSlider = createSlider(0, 100, 50, 1);
+    wiggleOffsetSlider = createSlider(0, 100, 50, 1);
+    wiggleAmountSlider = createSlider(0, 100, 50, 1);
 }
 
 function draw() {
@@ -57,6 +58,7 @@ class Squircle {
             let angleY = this.offset + gap * i - HALF_PI; // -HALF_PI <-> HALF_PI
             let sinAngleY = sin(angleY);
             let wiggleHeight = min(this.rad / this.steps / 2, this.rad / 10);
+            wiggleHeight *= wiggleAmountSlider.value() / 100;
 
             let angleStep = TWO_PI / 2 ** 6;
             for (let angle = 0; angle <= TWO_PI; angle += angleStep) {
@@ -118,7 +120,7 @@ class Squircle {
         this.rotX += this.rotRateX * speedFact;
         this.rotY += this.rotRateY * speedFact;
         this.rotZ += this.rotRateZ * speedFact;
-        this._wiggleOffset += this._wiggleOffsetRate * miscSlider.value() / 100;
+        this._wiggleOffset += this._wiggleOffsetRate * wiggleOffsetSlider.value() / 100;
 
         // Reset limits
         let limit = (number, max) => number > max ? number - max : number;
