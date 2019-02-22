@@ -1,5 +1,5 @@
 let angleChange = 0, angleRotate = 0;
-let speedSlider, rotateSlider, wiggleOffsetSlider, wiggleAmountSlider;
+let speedSlider, rotateSlider, wiggleOffsetSlider, wiggleAmountSlider, squircleSlider;
 let spheres = [];
 
 let logCount = 0, maxLogs = 100;
@@ -19,6 +19,7 @@ function setup() {
     rotateSlider = createSlider(0, 100, 25, 1);
     wiggleOffsetSlider = createSlider(0, 100, 50, 1);
     wiggleAmountSlider = createSlider(0, 100, 50, 1);
+    squircleSlider = createSlider(0, 100, 100, 1);
 }
 
 function draw() {
@@ -63,10 +64,11 @@ class Squircle {
             let angleStep = TWO_PI / 2 ** 6;
             for (let angle = 0; angle <= TWO_PI; angle += angleStep) {
 
-                let squircleAmount = 1 - abs(sinAngleY);
+                let squircleAmountRaw = 1 - abs(sinAngleY);
+                let squircleAmount = squircleAmountRaw * squircleSlider.value() / 100;
                 let angleOffset = angleY;
 
-                let wiggleY = wiggleHeight * sin(this._wiggleOffset + angle * 8) * squircleAmount;
+                let wiggleY = wiggleHeight * sin(this._wiggleOffset + angle * 8) * squircleAmountRaw;
                 let y = this.rad * sinAngleY + wiggleY; // -rad <-> rad
 
                 let addPoint = (anglePoint, anglePointAndOffset) => {
