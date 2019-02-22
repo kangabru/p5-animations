@@ -1,4 +1,4 @@
-let offset = 0;
+let offset = 0, rotateAngle = 0;
 let speedSlider, sizeSlider;
 let spheres = [];
 
@@ -17,10 +17,15 @@ function draw() {
     colorMode(HSL);
     background(255);
 
+    rotateY(rotateAngle);
+
     spheres.forEach(s => s.draw());
 
     offset += speedSlider.value() / 2 ** 13;
     if (offset > PI) offset -= PI;
+
+    rotateAngle += speedSlider.value() / 2 ** 13;
+    if (rotateAngle > TWO_PI) rotateAngle -= TWO_PI;
 }
 
 class Sphere {
@@ -50,7 +55,7 @@ class Sphere {
                 translate(0, 0, this.rad);
 
                 let axMap = map(cos(ax), -1, 1, 0, 255);
-                let ayMap = map(cos(ay), -1, 1, 0.1, 1)
+                let ayMap = map(cos(ay + rotateAngle), -1, 1, 0.1, 1)
                 stroke([axMap, 80, 50, ayMap]);
                 let radMax = 2 * PI * this.rad / stepsY * 0.7;
                 let radAct = radMax * cos(axo);
