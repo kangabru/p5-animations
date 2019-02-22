@@ -1,7 +1,7 @@
-let quantitySlider, explodeSlider, rotateSlider;
+let quantitySlider, explodeSlider, rotateSlider, is3dCheckbox;
 let gravity, minParticles = 3, explodeParticles;
 let angleRotate = 0;
-const windowOffset = 40;
+const windowOffset = 60;
 let particles = [], fireworks = [];
 let is3D = false, is2D = !is3D;
 
@@ -23,24 +23,30 @@ function draw() {
     background([0, 0, 100, 0.1]);
 
     if (is3D) {
-        // ortho();
-        translate(0, windowHeight / 2);
+        translate(0, windowHeight / 2 - 100);
         angleMode(DEGREES);
-        rotateX(15);
+        rotateX(10);
 
         angleMode(RADIANS);
         rotateY(angleRotate);
+
+        strokeWeight(3);
+        stroke(0);
+
+        const size = 20;
+        beginShape();
+        vertex(-size, 0, -size);
+        vertex(size, 0, -size);
+        vertex(size, 0, size);
+        vertex(-size, 0, size);
+        vertex(-size, 0, -size);
+        endShape();
     } else {
         translate(windowWidth / 2, windowHeight - windowOffset - 10);
     }
 
     strokeWeight(3);
     stroke(0);
-
-    point(-size, 0, -size);
-    point(size, 0, -size);
-    point(size, 0, size);
-    point(-size, 0, size);
 
     particles.forEach(p => {
         p.update();
