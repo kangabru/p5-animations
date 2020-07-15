@@ -2,17 +2,12 @@
 
 A collection of various animation sketches made with [P5.js](https://p5js.org/)
 
----
+[See them live here!](https://kb-p5-animations.netlify.app/)
 
-<div>
-    <img src="images/circles.jpg" alt="drawing" width="150" />
-    <img src="images/circles2.jpg" alt="drawing" width="150" />
-    <img src="images/noise.jpg" alt="drawing" width="150" />
-    <img src="images/fireworks.jpg" alt="drawing" width="150" />
-    <img src="images/squircles.jpg" alt="drawing" width="150" />
-    <img src="images/twist.jpg" alt="drawing" width="150" />
-</div>
+<img src="images/readme.jpg" alt="drawing" width="500" />
 
 ---
+
+Looking for more? I found another site with a [similar concept here](https://p5-animations.netlify.app/)
 
 Feel free to submit improvements or add your own!
