@@ -10,7 +10,7 @@ function setup() {
 
     quantitySlider = createSlider(0, 20, 10, 1);
     explodeSlider = createSlider(0, 40, 20, 1);
-    rotateSlider = createSlider(0, 100, 50, 1);
+    if (is3D) rotateSlider = createSlider(0, 100, 50, 1);
 
     gravity = vector(0, 0.1, 0);
     for (let i = 0; i < minParticles; i++) {
@@ -56,7 +56,7 @@ function draw() {
     particles = particles.filter(particle => !particle.canDelete());
     fireworks = fireworks.filter(firework => !firework.canDelete());
 
-    angleRotate += rotateSlider.value() / 2 ** 12;
+    if (is3D) angleRotate += rotateSlider.value() / 2 ** 12;
 
     while (fireworks.length < quantitySlider.value()) {
         let firework = new Firework();

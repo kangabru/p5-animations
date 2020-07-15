@@ -1,4 +1,3 @@
-let angle1 = 0, angle2 = 0;
 let size = 400, rad = size / 2;
 
 let angleChange = 0, angleRotate = 0;
@@ -8,9 +7,11 @@ function setup() {
     createCanvas(windowWidth, windowHeight - 40, WEBGL);
 
     // min, max, start, step
-    angleSlider = createSlider(0, 100, 50, 1);
+    angleSlider = createSlider(0, 100, 75, 1);
     rotateSlider = createSlider(0, 100, 25, 1);
     stepsSlider = createSlider(1, 10, 6, 1);
+
+    angleRotate = HALF_PI
 }
 
 function draw() {

@@ -1,5 +1,5 @@
 let angleChange = 0, angleRotate = 0;
-let slide1, slider2, slider3;
+let slide1, slider2;
 
 const radius = 200;
 let offset = 0;
@@ -11,8 +11,7 @@ function setup() {
     createCanvas(windowWidth, windowHeight - 50);
 
     slider1 = createSlider(0, 100, 5);
-    slider2 = createSlider(0, 100, 50);
-    slider3 = createSlider(0, 100, 50);
+    slider2 = createSlider(0, 100, 25);
 
     for (let x = 0; x < 100; x++) {
         for (let y = 0; y < 100; y++) {
@@ -27,7 +26,6 @@ function setup() {
 
 function draw() {
     translate(width / 2, height / 2);
-    // scale(0.5);
     background(255);
 
     stroke(0);
@@ -38,7 +36,6 @@ function draw() {
 
     diff = slider1.value() / 1000;
     let s2 = slider2.value();
-    let s3 = slider3.value();
 
     for (let i = 0; i < points.length; i++) {
         const v = points[i];
@@ -66,11 +63,4 @@ function draw() {
 
 function n(x, y, z) {
     return noise(x, y, z) * 2 - 1;
-    // let noises = [];
-    // for (let i = 0; i < 5; i++) {
-    //     const iDiff = diff * i;
-    //     let _noise = noise(x + iDiff, y + iDiff, z + iDiff) * 2 - 1;
-    //     noises.push(_noise);
-    // }
-    // return noises.reduce((p, c) => p + c, 0) / noises.length;
 }
