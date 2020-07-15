@@ -39,21 +39,39 @@ function draw() {
     stroke(0);
     strokeWeight(3);
 
-    beginShape(); // Render normal path
     for (let i = 0; i < path.length; i++) {
+        beginShape(); // Render normal path
+
+        stroke([map(i, 0, path.length, 0, 255), 100, 70]);
+
         const v0 = path[i];
         vertex(v0[0], v0[1], v0[2]);
         if (i === 0) vertex(-v0[0], -v0[1], v0[2]); // Join to reversed path
-    }
-    endShape();
 
-    beginShape(); // Render revered path
+        if (i > 0) {
+            const v1 = path[i-1];
+            vertex(v1[0], v1[1], v1[2]);
+        }
+
+        endShape();
+    }
+
     for (let i = 0; i < path.length; i++) {
+        beginShape(); // Render reversed path
+
+        stroke([map(i, 0, path.length, 0, 255), 100, 70]);
+
         const v0 = path[i];
         vertex(-v0[0], -v0[1], v0[2]);
         if (i === path.length - 1) vertex(v0[0], v0[1], v0[2]); // Join to normal path
+
+        if (i > 0) {
+            const v1 = path[i-1];
+            vertex(-v1[0], -v1[1], v1[2]);
+        }
+
+        endShape();
     }
-    endShape();
 
     // Animate rotation and number of path spins
     angleRotate += rotateSlider.value() / 2 ** 12;
