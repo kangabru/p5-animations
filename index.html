@@ -17,12 +17,18 @@
 
         #links a {
             display: inline-block;
+            margin: 20px;
         }
 
         img {
             width: 300px;
             height: 300px;
             pointer-events: none;
+            box-sizing: border-box;
+        }
+
+        img.smaller {
+            padding: 20px;
         }
 
         #links a p {
@@ -41,23 +47,21 @@
     <div id="links">
         <a href="circles/index.html">
             <img src="common/images/circles.PNG" />
-            <p>Circles #1</p>
         </a>
         <a href="circles2/index.html">
             <img src="common/images/circles2.PNG" />
-            <p>Circle #2</p>
+        </a>
+        <a href="noise/index.html">
+            <img src="common/images/noise.jpg" class="smaller" />
         </a>
         <a href="fireworks/index.html">
-            <img src="common/images/fireworks.PNG" />
-            <p>Firework</p>
+            <img src="common/images/fireworks.PNG" class="smaller" />
         </a>
         <a href="squircles/index.html">
             <img src="common/images/squircles.PNG" />
-            <p>Squircles</p>
         </a>
         <a href="twist/index.html">
-            <img src="common/images/twist.PNG" />
-            <p>Twist</p>
+            <img src="common/images/twist.PNG" class="smaller" />
         </a>
     </div>
 </body>
