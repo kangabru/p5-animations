@@ -38,7 +38,7 @@ function draw() {
     // Draw line
     noFill();
     stroke(0);
-    strokeWeight(3);
+    strokeWeight(6);
 
     for (let i = 0; i < path.length; i++) {
         beginShape(); // Render normal path

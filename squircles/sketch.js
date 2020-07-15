@@ -96,7 +96,7 @@ class Squircle {
 
         // Draw paths
         noFill();
-        strokeWeight(3);
+        strokeWeight(6);
 
         rotateX(this.rotX);
         rotateY(this.rotY);
